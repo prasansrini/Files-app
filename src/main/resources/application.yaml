@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: FileApp
+  main:
+    banner-mode: off
+  datasource:
+    url: jdbc:mysql://localhost:3306/file_tracker
+    username: root
+    password: prasanna@123
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQLDialect
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug
+        orm:
+          jdbc:
+            bind: trace
+
+server:
+  port: 9999
