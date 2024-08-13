@@ -1,5 +1,7 @@
 package org.example.service;
 
+import java.util.Optional;
+
 import org.example.entity.FileInfo;
 import org.example.exception.FileNotFoundException;
 import org.example.repository.FileRepository;
@@ -18,12 +20,11 @@ public class FileServiceImpl implements FileService {
 
     @Override
     public String getFile(int fileId) throws FileNotFoundException {
-        FileInfo fileInfo = mFileRepository.getFile(fileId);
-
-        if(fileInfo == null) {
+        Optional<FileInfo> fileToFind = mFileRepository.getFile(fileId);
+        if(!fileToFind.isEmpty()) {
+            return fileToFind.get().toString();
+        }  else {
             throw new FileNotFoundException("File with " + fileId + " not found!");
         }
-
-        return fileInfo.toString();
     }
 }

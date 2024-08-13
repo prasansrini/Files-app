@@ -1,5 +1,7 @@
 package org.example.repository;
 
+import java.util.Optional;
+
 import org.example.entity.FileInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -22,7 +24,7 @@ public class FileRepositoryImpl implements FileRepository {
     }
 
     @Override
-    public FileInfo getFile(int fileId) {
-        return mEntityManager.find(FileInfo.class, fileId);
+    public Optional<FileInfo> getFile(int fileId) {
+        return Optional.ofNullable(mEntityManager.find(FileInfo.class, fileId));
     }    
 }
